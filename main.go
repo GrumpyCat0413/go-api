@@ -4,11 +4,11 @@ import (
 	"errors"
 	"fmt"
 	"github.com/gin-gonic/gin"
+	"github.com/lexkong/log"
 	"github.com/spf13/pflag"
 	"github.com/spf13/viper"
 	"go-api/config"
 	"go-api/router"
-	"log"
 	"net/http"
 	"time"
 )
@@ -47,11 +47,11 @@ func main() {
 		if err := pingServer(); err != nil {
 			log.Fatal("The router has no response , or it might took too long to start up.", err)
 		}
-		log.Print("The router has been deployed successfully.") //路由器已成功部署
+		log.Info("The router has been deployed successfully.") //路由器已成功部署
 	}()
 
-	log.Printf("start to listening the incoming requests on http address: %s", viper.GetString("addr")) //从配置文件读取配置地址
-	log.Printf(http.ListenAndServe(":8080", g).Error())
+	log.Infof("start to listening the incoming requests on http address: %s", viper.GetString("addr")) //从配置文件读取配置地址
+	log.Info(http.ListenAndServe(viper.GetString("addr"), g).Error())
 }
 
 // API 服务器健康状态自检
@@ -71,7 +71,7 @@ func pingServer() error {
 			return nil
 		}
 
-		log.Print("Waiting for the router,retry in 1 second.")
+		log.Info("Waiting for the router,retry in 1 second.")
 		time.Sleep(time.Second)
 	}
 	return errors.New("cannot connect to the router.")
