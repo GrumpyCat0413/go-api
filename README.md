@@ -20,6 +20,10 @@ go开发后台api服务学习
 ### 五
 - 自定义error code 信息
 
+### 六
+- 封装 SendResponse
+- 创建 user的 CreateRequest 与 CreateResponse 尽量每一个接口都要创建与之对应的struct
+
 ### 使用第三方库
 - gin  
 - gopsutil ：电脑内存、cpu、硬盘等信息

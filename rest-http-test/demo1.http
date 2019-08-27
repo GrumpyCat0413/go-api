@@ -33,6 +33,13 @@ Content-Type: application/json
 }
 
 ###
+POST http://127.0.0.1:8080/v1/user/admin2?desc=hellodesc
+Content-Type: application/json
+
+{
+  "username":"asd",
+  "password":"111"
+}
 
 ###
 

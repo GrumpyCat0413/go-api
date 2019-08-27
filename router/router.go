@@ -30,7 +30,8 @@ func Load(g *gin.Engine, mw ...gin.HandlerFunc) *gin.Engine {
 	//新增一个创建用户的 API
 	u := g.Group("/v1/user")
 	{
-		u.POST("", user.Create)
+		//u.POST("", user.Create)
+		u.POST("/:username", user.Create)
 	}
 
 	// 定义了一个叫 sd 的分组，在该分组下注册了
