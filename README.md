@@ -10,9 +10,18 @@ go开发后台api服务学习
 - 使用pflag.parse() 来解析命令行 参数
 
 
+### 三
+- 使用lexkong/log 日志库 进行对日志的配置和管理，还能够按天或者容量来进行转存压缩日志
+
+
+### 四
+- Gorm 操作mysql 
+
 
 ### 使用第三方库
 - gin  
 - gopsutil ：电脑内存、cpu、硬盘等信息
 - pflag ：命令行参数 解析
 - viper ：配置文件读取及配置文件的热更新
+- lexkong/log 日志库 可以进行自动转存
+- Gorm mysql 数据库ORM框架

@@ -8,6 +8,7 @@ import (
 	"github.com/spf13/pflag"
 	"github.com/spf13/viper"
 	"go-api/config"
+	"go-api/model"
 	"go-api/router"
 	"net/http"
 	"time"
@@ -25,10 +26,14 @@ func main() {
 
 	pflag.Parse() // 命令行解析 cfg=配置文件的路径
 
-	// init config
+	// 初始化配置文件的读取
 	if err := config.Init(*cfg); err != nil {
 		panic(err)
 	}
+
+	// 数据库初始化
+	model.DB.Init()
+	defer model.DB.Close()
 
 	//gin.SetMode(gin.ReleaseMode)
 	// Set gin mode.
