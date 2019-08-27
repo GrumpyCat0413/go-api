@@ -19,6 +19,23 @@ GET http://127.0.0.1:8080/sd/cpu
 Accept: application/json
 ###
 
-GET http://127.0.0.1:8080/sd/ram
-Accept: application/json
+#
+POST http://127.0.0.1:8080/v1/user
+Content-Type: application/json
+
+###
+POST http://127.0.0.1:8080/v1/user
+Content-Type: application/json
+
+{
+    "username":"asd",
+    "password":"111"
+}
+
+###
+
+###
+
+###
+
 ###

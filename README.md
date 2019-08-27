@@ -17,6 +17,8 @@ go开发后台api服务学习
 ### 四
 - Gorm 操作mysql 
 
+### 五
+- 自定义error code 信息
 
 ### 使用第三方库
 - gin  

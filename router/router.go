@@ -3,6 +3,7 @@ package router
 import (
 	"github.com/gin-gonic/gin"
 	"go-api/handler/sd"
+	"go-api/handler/user"
 	"go-api/router/middleware"
 	"net/http"
 )
@@ -21,10 +22,16 @@ func Load(g *gin.Engine, mw ...gin.HandlerFunc) *gin.Engine {
 	g.Use(middleware.Options) // 浏览器跨域 OPTIONS 请求设置
 	g.Use(middleware.Secure)  // 一些安全设置
 	g.Use(mw...)
-	// 路由url 错误情况
+	// 路由url 错误情况 404 Handler.
 	g.NoRoute(func(c *gin.Context) {
 		c.String(http.StatusNotFound, "The incorrect API route.")
 	})
+
+	//新增一个创建用户的 API
+	u := g.Group("/v1/user")
+	{
+		u.POST("", user.Create)
+	}
 
 	// 定义了一个叫 sd 的分组，在该分组下注册了
 	// /health 、 /disk 、 /cpu 、 /ram HTTP 路径，
