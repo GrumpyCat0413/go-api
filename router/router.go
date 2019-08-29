@@ -18,6 +18,7 @@ func Load(g *gin.Engine, mw ...gin.HandlerFunc) *gin.Engine {
 	// 在处理某些请求时可能因为程序 bug 或者其他异常情况导致程序 panic，
 	// 这时候为了不影响下一次请求的调用，需要通过 gin.Recovery() 来恢复 API 服务 器
 	g.Use(gin.Recovery())
+	g.Use(gin.Logger())       // 输出到控制台的 请求log
 	g.Use(middleware.NoCache) // 强制浏览器不使用缓存
 	g.Use(middleware.Options) // 浏览器跨域 OPTIONS 请求设置
 	g.Use(middleware.Secure)  // 一些安全设置
@@ -31,7 +32,14 @@ func Load(g *gin.Engine, mw ...gin.HandlerFunc) *gin.Engine {
 	u := g.Group("/v1/user")
 	{
 		//u.POST("", user.Create)
-		u.POST("/:username", user.Create)
+		//u.POST("/:username", user.Create)
+
+		u.POST("", user.Create1)      //创建用户
+		u.DELETE("/:id", user.Delete) //删除用户
+		u.PUT("/:id", user.Update)    //更新用户
+		u.GET("", user.List)          //用户列表
+		u.GET("/:username", user.Get) //获取指定用户的详情
+
 	}
 
 	// 定义了一个叫 sd 的分组，在该分组下注册了

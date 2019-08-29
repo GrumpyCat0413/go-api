@@ -42,7 +42,36 @@ Content-Type: application/json
 }
 
 ###
+# 用户创建
+POST http://127.0.0.1:8080/v1/user
+Content-Type: application/json
+
+{
+  "username": "q5",
+  "password": "123456"
+}
 
 ###
+# 用户单个查询
+GET http://127.0.0.1:8080/v1/user/q3
+Accept: application/json
+
+###
+
+
+#删除用户
+DELETE http://127.0.0.1:8080/v1/user/2
+Content-Type: application/json
+
+###
+# 获取用户列表
+GET http://127.0.0.1:8080/v1/user
+Content-Type: application/json
+
+{
+  "username": "zhengyi",
+  "offset": "0",
+  "limit": "10"
+}
 
 ###

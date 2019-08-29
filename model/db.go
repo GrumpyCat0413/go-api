@@ -37,8 +37,8 @@ func openDB(username, password, addr, dbname string) *gorm.DB {
 
 // 设置数据库 参数 信息
 func setupDB(db *gorm.DB) {
-	db.LogMode(viper.GetBool("gormlog"))
-
+	//db.LogMode(viper.GetBool("gormlog"))
+	db.LogMode(true)
 	// 用于设置最大打开的连接数，默认值为0表示不限制.
 	// 设置最大的连接数，可以避免并发太高导致连接mysql出现too many connections的错误
 	//db.DB().SetMaxOpenConns(20000)
