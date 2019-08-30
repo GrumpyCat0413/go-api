@@ -28,8 +28,12 @@ func Load(g *gin.Engine, mw ...gin.HandlerFunc) *gin.Engine {
 		c.String(http.StatusNotFound, "The incorrect API route.")
 	})
 
+	//用于身份验证功能的API
+	g.POST("/login", user.Login)
+
 	//新增一个创建用户的 API
 	u := g.Group("/v1/user")
+	u.Use(middleware.AuthMiddleware()) //api鉴权
 	{
 		//u.POST("", user.Create)
 		//u.POST("/:username", user.Create)

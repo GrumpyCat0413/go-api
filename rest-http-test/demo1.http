@@ -47,7 +47,7 @@ POST http://127.0.0.1:8080/v1/user
 Content-Type: application/json
 
 {
-  "username": "q5",
+  "username": "q6",
   "password": "123456"
 }
 
@@ -67,6 +67,7 @@ Content-Type: application/json
 # 获取用户列表
 GET http://127.0.0.1:8080/v1/user
 Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE1NjcxOTAwODcsImlkIjo3LCJuYmYiOjE1NjcxOTAwODcsInVzZXJuYW1lIjoicTUifQ.Kl5WeyGiirSwyS6s8zoZmIrkcBKgc8mGwPbfEOC_u34
 
 {
   "username": "q",
@@ -74,13 +75,27 @@ Content-Type: application/json
   "limit": 10
 }
 
+
 ###
-GET http://127.0.0.1:8080/v1/user
+# 用户登入 测试jwt鉴权 1
+POST http://127.0.0.1:8080/login
 Content-Type: application/json
 
-###
+{
+  "username": "q5",
+  "password": "123456"
+}
 
 ###
+# 用户登入 测试jwt鉴权 2
+GET http://127.0.0.1:8080/v1/user
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE1NjcxOTAwODcsImlkIjo3LCJuYmYiOjE1NjcxOTAwODcsInVzZXJuYW1lIjoicTUifQ.Kl5WeyGiirSwyS6s8zoZmIrkcBKgc8mGwPbfEOC_u34
+Content-Type: application/json
 
+{
+  "username": "q",
+  "offset": 0,
+  "limit": 10
+}
 
 ###
