@@ -10,6 +10,7 @@ import (
 	"go-api/config"
 	"go-api/model"
 	"go-api/router"
+	"go-api/router/middleware"
 	"net/http"
 	"time"
 )
@@ -40,12 +41,14 @@ func main() {
 	gin.SetMode(viper.GetString("runmode"))
 	g := gin.New()
 
-	var middlewares []gin.HandlerFunc
+	//var middlewares []gin.HandlerFunc
 
 	// 配置文件解析
 	router.Load(
 		g,
-		middlewares...,
+		//middlewares...,
+		middleware.RequestId(),
+		middleware.Logging(),
 	)
 
 	go func() {
