@@ -69,9 +69,9 @@ GET http://127.0.0.1:8080/v1/user
 Content-Type: application/json
 
 {
-  "username": "zhengyi",
-  "offset": "0",
-  "limit": "10"
+  "username": "q",
+  "offset": 0,
+  "limit": 10
 }
 
 ###

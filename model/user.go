@@ -46,25 +46,16 @@ func ListUser(username string, offset, limit int) ([]*UserModel, uint64, error) 
 	var count uint64
 	fmt.Println("username", username)
 
-	//where := fmt.Sprintf("username like '%s%%'", username)
-	//if err := DB.Self.Model(&UserModel{}).Where(where).Count(&count).Error; err != nil {
-	//	return users, count, err
-	//}
-	//
-	//if err := DB.Self.Where(where).Offset(offset).Limit(limit).Order("id desc").Find(&users).Error; err != nil {
-	//	return users, count, err
-	//}
-	fmt.Println(username)
-
-	if err := DB.Self.Model(&UserModel{}).Count(&count).Error; err != nil {
+	where := fmt.Sprintf("username like '%s%%'", username)
+	if err := DB.Self.Model(&UserModel{}).Where(where).Count(&count).Error; err != nil {
 		return users, count, err
 	}
 
-	if err := DB.Self.Offset(offset).Limit(limit).Order("id desc").Find(&users).Error; err != nil {
+	if err := DB.Self.Where(where).Offset(offset).Limit(limit).Order("id desc").Find(&users).Error; err != nil {
 		return users, count, err
 	}
+
 	return users, count, nil
-
 }
 
 // Encrypt the user password. 用户密码加密
