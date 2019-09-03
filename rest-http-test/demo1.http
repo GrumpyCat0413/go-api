@@ -99,3 +99,16 @@ Content-Type: application/json
 }
 
 ###
+
+# 负载均衡测试 用户登入 测试jwt鉴权 2
+GET http://apiserver.com/v1/user
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE1NjcxOTAwODcsImlkIjo3LCJuYmYiOjE1NjcxOTAwODcsInVzZXJuYW1lIjoicTUifQ.Kl5WeyGiirSwyS6s8zoZmIrkcBKgc8mGwPbfEOC_u34
+Content-Type: application/json
+
+{
+  "username": "q",
+  "offset": 0,
+  "limit": 10
+}
+
+###

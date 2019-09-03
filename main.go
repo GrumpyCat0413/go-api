@@ -60,6 +60,7 @@ func main() {
 
 	log.Infof("start to listening the incoming requests on http address: %s", viper.GetString("addr")) //从配置文件读取配置地址
 	log.Info(http.ListenAndServe(viper.GetString("addr"), g).Error())
+	//log.Info(http.ListenAndServe(":8082", g).Error())
 }
 
 // API 服务器健康状态自检
