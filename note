@@ -1,0 +1,20 @@
+go grpc的使用
+1、首先下载 protobuf的编译器protoc
+https://github.com/protocolbuffers/protobuf/releases/tag/v3.9.1
+然后 解压 进入bin 中 找到protc.exe 将该文件拷贝到 goroot目录下的bin目录中
+2、然后 go get -u github.com/golang/protobuf/protoc-gen-go
+去gopath中的bin目录中 找到protoc-gen-go.exe 文件 ，也将该文拷贝到goroot目录下的bin目录中
+
+在命令行中 测试 protoc --version 命令
+3、go get -u github.com/golang/protobuf/proto
+4、go get -u Google.golang.org/gRPC
+
+
+生成pb.go文件的命令 gou_out=. 当前目录
+protoc --go_out=. *.proto
+
+如果生成grpc服务 则用 在当前目录下执行
+protoc --go_out=plugins=grpc:. *.proto
+
+或者在上一目录执行
+protoc -I helloworld/ helloworld/helloworld.proto --go_out=plugins=grpc:helloworld
